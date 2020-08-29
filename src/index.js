@@ -1,3 +1,8 @@
+//functional components, not class-based
+//remember when building APIs, USETs, with one class-based view, one could have CRUD ops spelled out
+
+//classes are more orderly, but their is explicit syntax
+
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 
@@ -16,14 +21,15 @@ const calcGoalProgress = (total, goal) => {
     return getPercent(total/goal)
   }
 
+//class-based components you don't have to pass these props, you use {this.props} method instead
+//equivalent: const SkiDayCounter = (props)
 
-
-const SkiDayCounter = ({total, powder, backcountry, goal}) => {
+const SkiDayCounter = ({total, powder, backcountry, goal}) => { //unpacking the props
   return (
   <section>
         <div>
           <p>
-            Total Days: {total}
+            Total Days: {total} //this would typically say {props.total}
           </p>
         </div>
         <div>
@@ -48,7 +54,7 @@ const SkiDayCounter = ({total, powder, backcountry, goal}) => {
 
 
 render(
-  <SkiDayCounter
+  <SkiDayCounter //this is where we would have to pass it in
     total= {skiData.total}
     powder={skiData.powder}
     backcountry={skiData.backcountry}
